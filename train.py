@@ -11,7 +11,6 @@ import tensorflow as tf
 
 # Suppress Tensorflow debugging messages:
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-tf.logging.set_verbosity(tf.logging.ERROR)
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 import time

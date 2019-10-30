@@ -115,5 +115,5 @@ def print_samples(raw_text, *args, **kwargs):
      overriding top_k if set to a value > 0. A good setting is 0.9.
     """
     with setup_model(*args, **kwargs) as args2:
-        print_samples_for_initialized_model(raw_text, *args)
+        print_samples_for_initialized_model(raw_text, *args2)
 

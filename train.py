@@ -85,9 +85,15 @@ def main():
         if args.optimizer == 'adam':
             args.only_train_transformer_layers = True
 
-    config = tf.ConfigProto()
+            config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
     config.graph_options.rewrite_options.layout_optimizer = rewriter_config_pb2.RewriterConfig.OFF
+
+    # Suppress Tensorflow debugging messages:
+    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+    tf.logging.set_verbosity(tf.logging.ERROR)
+    tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+
     with tf.Session(config=config) as sess:
         context = tf.placeholder(tf.int32, [args.batch_size, None])
         context_in = randomize(context, hparams, args.noise)
